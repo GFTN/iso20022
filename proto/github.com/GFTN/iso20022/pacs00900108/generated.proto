@@ -1,0 +1,1905 @@
+syntax = "proto3";
+package github.ibm.com.gftn.iso20022.pacs00900108;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+option (gogoproto.protosizer_all) = true;
+option (gogoproto.sizer_all) = false;
+option go_package = "pacs00900108";
+
+// Specifies the unique identification of an account as assigned by the account servicer.
+message AccountIdentification4Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string iban = 1 [(gogoproto.casttype) = "IBAN2007Identifier", (gogoproto.customname) = "IBAN"];
+	github.ibm.com.gftn.iso20022.pacs00900108.GenericAccountIdentification1 othr = 2;
+}
+
+// Sets of elements to identify a name of the identification scheme.
+message AccountSchemeName1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalAccountIdentification1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.
+message ActiveCurrencyAndAmount {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string value = 1;
+	string currency = 2;
+}
+
+// A number of monetary units specified in an active or a historic currency where the unit of currency is explicit and compliant with ISO 4217.
+message ActiveOrHistoricCurrencyAndAmount {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string value = 1;
+	string currency = 2;
+}
+
+// Choice of formats for the type of address.
+message AddressType3Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "AddressType2Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.GenericIdentification30 prtry = 2;
+}
+
+// Provides further details on the list of direct debit mandate elements that have been modified when the amendment indicator has been set.
+message AmendmentInformationDetails12 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string orgnl_mndt_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification125 orgnl_cdtr_schme_id = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification5 orgnl_cdtr_agt = 3;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount24 orgnl_cdtr_agt_acct = 4;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification125 orgnl_dbtr = 5;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount24 orgnl_dbtr_acct = 6;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification5 orgnl_dbtr_agt = 7;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount24 orgnl_dbtr_agt_acct = 8;
+	string orgnl_fnl_colltn_dt = 9 [(gogoproto.casttype) = "ISODate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Frequency36Choice orgnl_frqcy = 10;
+	github.ibm.com.gftn.iso20022.pacs00900108.MandateSetupReason1Choice orgnl_rsn = 11;
+	string orgnl_trckg_days = 12 [(gogoproto.casttype) = "Exact2NumericText"];
+}
+
+// Provides further details on the list of direct debit mandate elements that have been modified when the amendment indicator has been set.
+message AmendmentInformationDetails13 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string orgnl_mndt_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 orgnl_cdtr_schme_id = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 orgnl_cdtr_agt = 3;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 orgnl_cdtr_agt_acct = 4;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 orgnl_dbtr = 5;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 orgnl_dbtr_acct = 6;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 orgnl_dbtr_agt = 7;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 orgnl_dbtr_agt_acct = 8;
+	string orgnl_fnl_colltn_dt = 9 [(gogoproto.casttype) = "ISODate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Frequency36Choice orgnl_frqcy = 10;
+	github.ibm.com.gftn.iso20022.pacs00900108.MandateSetupReason1Choice orgnl_rsn = 11;
+	string orgnl_trckg_days = 12 [(gogoproto.casttype) = "Exact2NumericText"];
+}
+
+// Specifies the amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party.
+message AmountType4Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount instd_amt = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.EquivalentAmount2 eqvt_amt = 2;
+}
+
+// Provides the details on the user identification or any user key that allows to check if the initiating party is allowed to issue the transaction.
+message Authorisation1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "Authorisation1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max128Text"];
+}
+
+// Set of elements used to uniquely and unambiguously identify a financial institution or a branch of a financial institution.
+message BranchAndFinancialInstitutionIdentification5 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.FinancialInstitutionIdentification8 fin_instn_id = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchData2 brnch_id = 2;
+}
+
+// Unique and unambiguous identification of a financial institution or a branch of a financial institution.
+message BranchAndFinancialInstitutionIdentification6 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.FinancialInstitutionIdentification18 fin_instn_id = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchData3 brnch_id = 2;
+}
+
+// Information that locates and identifies a specific branch of a financial institution.
+message BranchData2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string nm = 2 [(gogoproto.casttype) = "Max140Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.PostalAddress6 pstl_adr = 3;
+}
+
+// Information that locates and identifies a specific branch of a financial institution.
+message BranchData3 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string lei = 2 [(gogoproto.casttype) = "LEIIdentifier", (gogoproto.customname) = "LEI"];
+	string nm = 3 [(gogoproto.casttype) = "Max140Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.PostalAddress24 pstl_adr = 4;
+}
+
+// Specifies the Business Application Header of the Business Message.
+// Can be used when replying to a query; can also be used when canceling or amending.
+message BusinessApplicationHeader1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string char_set = 1 [(gogoproto.casttype) = "UnicodeChartsCode"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Party9Choice fr = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party9Choice to = 3;
+	string biz_msg_idr = 4 [(gogoproto.casttype) = "Max35Text"];
+	string msg_def_idr = 5 [(gogoproto.casttype) = "Max35Text"];
+	string biz_svc = 6 [(gogoproto.casttype) = "Max35Text"];
+	string cre_dt = 7 [(gogoproto.casttype) = "ISONormalisedDateTime"];
+	string cpy_dplct = 8 [(gogoproto.casttype) = "CopyDuplicate1Code"];
+	string pssbl_dplct = 9 [(gogoproto.casttype) = "YesNoIndicator"];
+	string prty = 10 [(gogoproto.casttype) = "BusinessMessagePriorityCode"];
+	string sgntr = 11 [(gogoproto.casttype) = "SignatureEnvelope"];
+}
+
+// The Business Layer deals with Business Messages. The behaviour of the Business Messages is fully described by the Business Transaction and the structure of the Business Messages is fully described by the Message Definitions and related Message Rules, Rules and Market Practices. All of which are registered in the ISO 20022 Repository.
+// A single new Business Message (with its accompagnying business application header) is created - by the sending MessagingEndpoint - for each business event; that is each interaction in a Business Transaction. A Business Message adheres to the following principles:
+// " A Business Message (and its business application header) must not contain information about the Message Transport System or the mechanics or mechanism of message sending, transportation, or receipt.
+// " A Business Message must be comprehensible outside of the context of the Transport Message. That is the Business Message must not require knowledge of the Transport Message to be understood.
+// " A Business Message may contain headers, footers, and envelopes that are meaningful for the business. When present, they are treated as any other message content, which means that they are considered part of the Message Definition of the Business Message and as such will be part of the ISO 20022 Repository.
+// " A Business Message refers to Business Actors by their Name. Each instance of a Business Actor has one Name. The Business Actor must not be referred to in the Transport Layer.
+// Specific usage of this BusinessMessageHeader may be defined by the relevant SEG.
+message BusinessApplicationHeaderV01 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string char_set = 1 [(gogoproto.casttype) = "UnicodeChartsCode"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Party9Choice fr = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party9Choice to = 3;
+	string biz_msg_idr = 4 [(gogoproto.casttype) = "Max35Text"];
+	string msg_def_idr = 5 [(gogoproto.casttype) = "Max35Text"];
+	string biz_svc = 6 [(gogoproto.casttype) = "Max35Text"];
+	string cre_dt = 7 [(gogoproto.casttype) = "ISONormalisedDateTime"];
+	string cpy_dplct = 8 [(gogoproto.casttype) = "CopyDuplicate1Code"];
+	string pssbl_dplct = 9 [(gogoproto.casttype) = "YesNoIndicator"];
+	string prty = 10 [(gogoproto.casttype) = "BusinessMessagePriorityCode"];
+	string sgntr = 11 [(gogoproto.casttype) = "SignatureEnvelope"];
+	github.ibm.com.gftn.iso20022.pacs00900108.BusinessApplicationHeader1 rltd = 12;
+}
+
+// Specifies the reason for the cancellation request.
+message CancellationReason33Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalCancellationReason1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Specifies the reason for the transaction cancellation status.
+message CancellationStatusReason3Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalPaymentCancellationRejection1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Provides further details on the status of the cancellation request.
+message CancellationStatusReason4 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 orgtr = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.CancellationStatusReason3Choice rsn = 2;
+	repeated string addtl_inf = 3;
+}
+
+// Provides further details to identify an investigation case.
+message Case5 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Party40Choice cretr = 2;
+	string reop_case_indctn = 3 [(gogoproto.casttype) = "YesNoIndicator"];
+}
+
+// Provides the details to identify an account.
+message CashAccount24 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.AccountIdentification4Choice id = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccountType2Choice tp = 2;
+	string ccy = 3 [(gogoproto.casttype) = "ActiveOrHistoricCurrencyCode"];
+	string nm = 4 [(gogoproto.casttype) = "Max70Text"];
+}
+
+// Provides the details to identify an account.
+message CashAccount38 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.AccountIdentification4Choice id = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccountType2Choice tp = 2;
+	string ccy = 3 [(gogoproto.casttype) = "ActiveOrHistoricCurrencyCode"];
+	string nm = 4 [(gogoproto.casttype) = "Max70Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ProxyAccountIdentification1 prxy = 5;
+}
+
+// Nature or use of the account.
+message CashAccountType2Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalCashAccountType1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Specifies the high level purpose of the instruction based on a set of pre-defined categories.
+// Usage: This is used by the initiating party to provide information concerning the processing of the payment. It is likely to trigger special processing by any of the agents involved in the payment chain.
+message CategoryPurpose1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalCategoryPurpose1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Specifies the charge type.
+message ChargeType3Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalChargeType1Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.GenericIdentification3 prtry = 2;
+}
+
+// Set of elements used to provide information on the charges related to the payment transaction.
+message Charges2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount amt = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification5 agt = 2;
+}
+
+// Provides further details on the charges related to the payment transaction.
+message Charges6 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount ttl_chrgs_and_tax_amt = 1;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.ChargesRecord3 rcrd = 2;
+}
+
+// Provides information on the charges related to the payment transaction.
+message Charges7 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount amt = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 agt = 2;
+}
+
+// Provides further individual record details on the charges related to the payment transaction.
+message ChargesRecord3 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount amt = 1;
+	string cdt_dbt_ind = 2 [(gogoproto.casttype) = "CreditDebitCode"];
+	string chrg_incl_ind = 3 [(gogoproto.casttype) = "ChargeIncludedIndicator"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ChargeType3Choice tp = 4;
+	string rate = 5 [(gogoproto.casttype) = "PercentageRate"];
+	string br = 6 [(gogoproto.casttype) = "ChargeBearerType1Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 agt = 7;
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxCharges2 tax = 8;
+}
+
+// Specifies details of a claim non receipt status advice.
+message ClaimNonReceipt2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string dt_prcd = 1 [(gogoproto.casttype) = "ISODate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 orgnl_nxt_agt = 2;
+}
+
+// Specifies the rejection reason of a claim non receipt.
+message ClaimNonReceiptRejectReason1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalClaimNonReceiptRejection1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Choice of a clearing system identifier.
+message ClearingSystemIdentification2Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalClearingSystemIdentification1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Specifies the clearing system identification.
+message ClearingSystemIdentification3Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalCashClearingSystem1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Unique identification, as assigned by a clearing system, to unambiguously identify a member of the clearing system.
+message ClearingSystemMemberIdentification2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ClearingSystemIdentification2Choice clr_sys_id = 1;
+	string mmb_id = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Specifies the details of a payment compensation.
+message Compensation2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveCurrencyAndAmount amt = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 dbtr_agt = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 cdtr_agt = 3;
+	github.ibm.com.gftn.iso20022.pacs00900108.CompensationReason1Choice rsn = 4;
+}
+
+// Specifies the reason for the payment compensation.
+message CompensationReason1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalPaymentCompensationReason1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Specifies the details of the contact person.
+message Contact4 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string nm_prfx = 1 [(gogoproto.casttype) = "NamePrefix2Code"];
+	string nm = 2 [(gogoproto.casttype) = "Max140Text"];
+	string phne_nb = 3 [(gogoproto.casttype) = "PhoneNumber"];
+	string mob_nb = 4 [(gogoproto.casttype) = "PhoneNumber"];
+	string fax_nb = 5 [(gogoproto.casttype) = "PhoneNumber"];
+	string email_adr = 6 [(gogoproto.casttype) = "Max2048Text"];
+	string email_purp = 7 [(gogoproto.casttype) = "Max35Text"];
+	string job_titl = 8 [(gogoproto.casttype) = "Max35Text"];
+	string rspnsblty = 9 [(gogoproto.casttype) = "Max35Text"];
+	string dept = 10 [(gogoproto.casttype) = "Max70Text"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.OtherContact1 othr = 11;
+	string prefrd_mtd = 12 [(gogoproto.casttype) = "PreferredContactMethod1Code"];
+}
+
+// Communication device number or electronic address used for communication.
+message ContactDetails2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string nm_prfx = 1 [(gogoproto.casttype) = "NamePrefix1Code"];
+	string nm = 2 [(gogoproto.casttype) = "Max140Text"];
+	string phne_nb = 3 [(gogoproto.casttype) = "PhoneNumber"];
+	string mob_nb = 4 [(gogoproto.casttype) = "PhoneNumber"];
+	string fax_nb = 5 [(gogoproto.casttype) = "PhoneNumber"];
+	string email_adr = 6 [(gogoproto.casttype) = "Max2048Text"];
+	string othr = 7 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Set of elements used to provide information on the group of the corrective transaction, to which the resolution message refers.
+message CorrectiveGroupInformation1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string msg_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string msg_nm_id = 2 [(gogoproto.casttype) = "Max35Text"];
+	string cre_dt_tm = 3 [(gogoproto.casttype) = "ISODateTime"];
+}
+
+// Provides information on the corrective interbank transaction, to which the resolution message refers.
+message CorrectiveInterbankTransaction2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.CorrectiveGroupInformation1 grp_hdr = 1;
+	string instr_id = 2 [(gogoproto.casttype) = "Max35Text"];
+	string end_to_end_id = 3 [(gogoproto.casttype) = "Max35Text"];
+	string tx_id = 4 [(gogoproto.casttype) = "Max35Text"];
+	string uetr = 5 [(gogoproto.casttype) = "UUIDv4Identifier", (gogoproto.customname) = "UETR"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount intr_bk_sttlm_amt = 6;
+	string intr_bk_sttlm_dt = 7 [(gogoproto.casttype) = "ISODate"];
+}
+
+// Provides information on the corrective payment initiation transaction, to which the resolution message refers.
+message CorrectivePaymentInitiation4 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.CorrectiveGroupInformation1 grp_hdr = 1;
+	string pmt_inf_id = 2 [(gogoproto.casttype) = "Max35Text"];
+	string instr_id = 3 [(gogoproto.casttype) = "Max35Text"];
+	string end_to_end_id = 4 [(gogoproto.casttype) = "Max35Text"];
+	string uetr = 5 [(gogoproto.casttype) = "UUIDv4Identifier", (gogoproto.customname) = "UETR"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount instd_amt = 6;
+	github.ibm.com.gftn.iso20022.pacs00900108.DateAndDateTime2Choice reqd_exctn_dt = 7;
+	string reqd_colltn_dt = 8 [(gogoproto.casttype) = "ISODate"];
+}
+
+// Provide further details specific to the individual transaction(s) included in the message.
+message CreditTransferTransaction36 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.PaymentIdentification7 pmt_id = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.PaymentTypeInformation28 pmt_tp_inf = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveCurrencyAndAmount intr_bk_sttlm_amt = 3;
+	string intr_bk_sttlm_dt = 4 [(gogoproto.casttype) = "ISODate"];
+	string sttlm_prty = 5 [(gogoproto.casttype) = "Priority3Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.SettlementDateTimeIndication1 sttlm_tm_indctn = 6;
+	github.ibm.com.gftn.iso20022.pacs00900108.SettlementTimeRequest2 sttlm_tm_req = 7;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 prvs_instg_agt1 = 8;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 prvs_instg_agt1_acct = 9;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 prvs_instg_agt2 = 10;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 prvs_instg_agt2_acct = 11;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 prvs_instg_agt3 = 12;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 prvs_instg_agt3_acct = 13;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 instg_agt = 14;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 instd_agt = 15;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 intrmy_agt1 = 16;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 intrmy_agt1_acct = 17;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 intrmy_agt2 = 18;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 intrmy_agt2_acct = 19;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 intrmy_agt3 = 20;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 intrmy_agt3_acct = 21;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 ultmt_dbtr = 22;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 dbtr = 23;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 dbtr_acct = 24;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 dbtr_agt = 25;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 dbtr_agt_acct = 26;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 cdtr_agt = 27;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 cdtr_agt_acct = 28;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 cdtr = 29;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 cdtr_acct = 30;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 ultmt_cdtr = 31;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.InstructionForCreditorAgent2 instr_for_cdtr_agt = 32;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.InstructionForNextAgent1 instr_for_nxt_agt = 33;
+	github.ibm.com.gftn.iso20022.pacs00900108.Purpose2Choice purp = 34;
+	github.ibm.com.gftn.iso20022.pacs00900108.RemittanceInformation2 rmt_inf = 35;
+	github.ibm.com.gftn.iso20022.pacs00900108.CreditTransferTransaction37 undrlyg_cstmr_cdt_trf = 36;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.SupplementaryData1 splmtry_data = 37;
+}
+
+// Provides further details specific to the individual transaction(s) included in the message.
+message CreditTransferTransaction37 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 ultmt_dbtr = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 initg_pty = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 dbtr = 3;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 dbtr_acct = 4;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 dbtr_agt = 5;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 dbtr_agt_acct = 6;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 prvs_instg_agt1 = 7;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 prvs_instg_agt1_acct = 8;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 prvs_instg_agt2 = 9;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 prvs_instg_agt2_acct = 10;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 prvs_instg_agt3 = 11;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 prvs_instg_agt3_acct = 12;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 intrmy_agt1 = 13;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 intrmy_agt1_acct = 14;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 intrmy_agt2 = 15;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 intrmy_agt2_acct = 16;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 intrmy_agt3 = 17;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 intrmy_agt3_acct = 18;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 cdtr_agt = 19;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 cdtr_agt_acct = 20;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 cdtr = 21;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 cdtr_acct = 22;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 ultmt_cdtr = 23;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.InstructionForCreditorAgent1 instr_for_cdtr_agt = 24;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.InstructionForNextAgent1 instr_for_nxt_agt = 25;
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxInformation8 tax = 26;
+	github.ibm.com.gftn.iso20022.pacs00900108.RemittanceInformation16 rmt_inf = 27;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount instd_amt = 28;
+}
+
+// Reference information provided by the creditor to allow the identification of the underlying documents.
+message CreditorReferenceInformation2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.CreditorReferenceType2 tp = 1;
+	string ref = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Specifies the type of document referred by the creditor.
+message CreditorReferenceType1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "DocumentType3Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Specifies the type of creditor reference.
+message CreditorReferenceType2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.CreditorReferenceType1Choice cd_or_prtry = 1;
+	string issr = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Choice between a date or a date and time format.
+message DateAndDateTime2Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string dt = 1 [(gogoproto.casttype) = "ISODate"];
+	string dt_tm = 2 [(gogoproto.casttype) = "ISODateTime"];
+}
+
+// Date and place of birth of a person.
+message DateAndPlaceOfBirth {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string birth_dt = 1 [(gogoproto.casttype) = "ISODate"];
+	string prvc_of_birth = 2 [(gogoproto.casttype) = "Max35Text"];
+	string city_of_birth = 3 [(gogoproto.casttype) = "Max35Text"];
+	string ctry_of_birth = 4 [(gogoproto.casttype) = "CountryCode"];
+}
+
+// Date and place of birth of a person.
+message DateAndPlaceOfBirth1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string birth_dt = 1 [(gogoproto.casttype) = "ISODate"];
+	string prvc_of_birth = 2 [(gogoproto.casttype) = "Max35Text"];
+	string city_of_birth = 3 [(gogoproto.casttype) = "Max35Text"];
+	string ctry_of_birth = 4 [(gogoproto.casttype) = "CountryCode"];
+}
+
+// Range of time defined by a start date and an end date.
+message DatePeriod2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string fr_dt = 1 [(gogoproto.casttype) = "ISODate"];
+	string to_dt = 2 [(gogoproto.casttype) = "ISODate"];
+}
+
+// Specifies the amount with a specific type.
+message DiscountAmountAndType1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.DiscountAmountType1Choice tp = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount amt = 2;
+}
+
+// Specifies the amount type.
+message DiscountAmountType1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalDiscountAmountType1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Set of elements used to provide information on the amount and reason of the document adjustment.
+message DocumentAdjustment1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount amt = 1;
+	string cdt_dbt_ind = 2 [(gogoproto.casttype) = "CreditDebitCode"];
+	string rsn = 3 [(gogoproto.casttype) = "Max4Text"];
+	string addtl_inf = 4 [(gogoproto.casttype) = "Max140Text"];
+}
+
+// Identifies the documents referred to in the remittance information.
+message DocumentLineIdentification1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.DocumentLineType1 tp = 1;
+	string nb = 2 [(gogoproto.casttype) = "Max35Text"];
+	string rltd_dt = 3 [(gogoproto.casttype) = "ISODate"];
+}
+
+// Provides document line information.
+message DocumentLineInformation1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.DocumentLineIdentification1 id = 1;
+	string desc = 2 [(gogoproto.casttype) = "Max2048Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.RemittanceAmount3 amt = 3;
+}
+
+// Specifies the type of the document line identification.
+message DocumentLineType1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.DocumentLineType1Choice cd_or_prtry = 1;
+	string issr = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Specifies the type of the document line identification.
+message DocumentLineType1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalDocumentLineType1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Amount of money to be moved between the debtor and creditor, expressed in the currency of the debtor's account, and the currency in which the amount is to be moved.
+message EquivalentAmount2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount amt = 1;
+	string ccy_of_trf = 2 [(gogoproto.casttype) = "ActiveOrHistoricCurrencyCode"];
+}
+
+// Sets of elements to identify a name of the organisation identification scheme.
+message FinancialIdentificationSchemeName1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalFinancialInstitutionIdentification1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Scope
+// The FinancialInstitutionCreditTransfer message is sent by a debtor financial institution to a creditor financial institution, directly or through other agents and/or a payment clearing and settlement system.
+// It is used to move funds from a debtor account to a creditor, where both debtor and creditor are financial institutions.
+// Usage
+// The FinancialInstitutionCreditTransfer message is exchanged between agents and can contain one or more credit transfer instructions where debtor and creditor are both financial institutions.
+// The FinancialInstitutionCreditTransfer message does not allow for grouping: a CreditTransferTransactionInformation block must be present for each credit transfer transaction.
+// The FinancialInstitutionCreditTransfer message can be used in domestic and cross-border scenarios.
+message FinancialInstitutionCreditTransferV08 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.GroupHeader93 grp_hdr = 1;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.CreditTransferTransaction36 cdt_trf_tx_inf = 2;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.SupplementaryData1 splmtry_data = 3;
+}
+
+// Specifies the details to identify a financial institution.
+message FinancialInstitutionIdentification18 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string bicfi = 1 [(gogoproto.casttype) = "BICFIDec2014Identifier", (gogoproto.customname) = "BICFI"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ClearingSystemMemberIdentification2 clr_sys_mmb_id = 2;
+	string lei = 3 [(gogoproto.casttype) = "LEIIdentifier", (gogoproto.customname) = "LEI"];
+	string nm = 4 [(gogoproto.casttype) = "Max140Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.PostalAddress24 pstl_adr = 5;
+	github.ibm.com.gftn.iso20022.pacs00900108.GenericFinancialIdentification1 othr = 6;
+}
+
+// Set of elements used to identify a financial institution.
+message FinancialInstitutionIdentification8 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string bicfi = 1 [(gogoproto.casttype) = "BICFIIdentifier", (gogoproto.customname) = "BICFI"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ClearingSystemMemberIdentification2 clr_sys_mmb_id = 2;
+	string nm = 3 [(gogoproto.casttype) = "Max140Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.PostalAddress6 pstl_adr = 4;
+	github.ibm.com.gftn.iso20022.pacs00900108.GenericFinancialIdentification1 othr = 5;
+}
+
+// Choice of format for a frequency, for example, the frequency of payment.
+message Frequency36Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string tp = 1 [(gogoproto.casttype) = "Frequency6Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.FrequencyPeriod1 prd = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.FrequencyAndMoment1 pt_in_tm = 3;
+}
+
+// Defines a frequency in terms a specific moment within a specified period type.
+message FrequencyAndMoment1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string tp = 1 [(gogoproto.casttype) = "Frequency6Code"];
+	string pt_in_tm = 2 [(gogoproto.casttype) = "Exact2NumericText"];
+}
+
+// Defines a frequency in terms on counts per period for a specific period type.
+message FrequencyPeriod1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string tp = 1 [(gogoproto.casttype) = "Frequency6Code"];
+	string cnt_per_prd = 2 [(gogoproto.casttype) = "DecimalNumber"];
+}
+
+// Provides remittance information about a payment for garnishment-related purposes.
+message Garnishment2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.GarnishmentType1 tp = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification125 grnshee = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification125 grnshmt_admstr = 3;
+	string ref_nb = 4 [(gogoproto.casttype) = "Max140Text"];
+	string dt = 5 [(gogoproto.casttype) = "ISODate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount rmtd_amt = 6;
+	string fmly_mdcl_insrnc_ind = 7 [(gogoproto.casttype) = "TrueFalseIndicator"];
+	string mplyee_termntn_ind = 8 [(gogoproto.casttype) = "TrueFalseIndicator"];
+}
+
+// Provides remittance information about a payment for garnishment-related purposes.
+message Garnishment3 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.GarnishmentType1 tp = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 grnshee = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 grnshmt_admstr = 3;
+	string ref_nb = 4 [(gogoproto.casttype) = "Max140Text"];
+	string dt = 5 [(gogoproto.casttype) = "ISODate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount rmtd_amt = 6;
+	string fmly_mdcl_insrnc_ind = 7 [(gogoproto.casttype) = "TrueFalseIndicator"];
+	string mplyee_termntn_ind = 8 [(gogoproto.casttype) = "TrueFalseIndicator"];
+}
+
+// Specifies the type of garnishment.
+message GarnishmentType1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.GarnishmentType1Choice cd_or_prtry = 1;
+	string issr = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Specifies the type of garnishment.
+message GarnishmentType1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalGarnishmentType1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Information related to a generic account identification.
+message GenericAccountIdentification1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Max34Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.AccountSchemeName1Choice schme_nm = 2;
+	string issr = 3 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Information related to an identification of a financial institution.
+message GenericFinancialIdentification1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.FinancialIdentificationSchemeName1Choice schme_nm = 2;
+	string issr = 3 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Information related to an identification, for example, party identification or account identification.
+message GenericIdentification3 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string issr = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Information related to an identification, for example, party identification or account identification.
+message GenericIdentification30 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Exact4AlphaNumericText"];
+	string issr = 2 [(gogoproto.casttype) = "Max35Text"];
+	string schme_nm = 3 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Information related to an identification of an organisation.
+message GenericOrganisationIdentification1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.OrganisationIdentificationSchemeName1Choice schme_nm = 2;
+	string issr = 3 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Information related to an identification of a person.
+message GenericPersonIdentification1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.PersonIdentificationSchemeName1Choice schme_nm = 2;
+	string issr = 3 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Set of characteristics shared by all individual transactions included in the message.
+message GroupHeader93 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string msg_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string cre_dt_tm = 2 [(gogoproto.casttype) = "ISODateTime"];
+	string btch_bookg = 3 [(gogoproto.casttype) = "BatchBookingIndicator"];
+	string nb_of_txs = 4 [(gogoproto.casttype) = "Max15NumericText"];
+	string ctrl_sum = 5 [(gogoproto.casttype) = "DecimalNumber"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveCurrencyAndAmount ttl_intr_bk_sttlm_amt = 6;
+	string intr_bk_sttlm_dt = 7 [(gogoproto.casttype) = "ISODate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.SettlementInstruction7 sttlm_inf = 8;
+	github.ibm.com.gftn.iso20022.pacs00900108.PaymentTypeInformation28 pmt_tp_inf = 9;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 instg_agt = 10;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 instd_agt = 11;
+}
+
+// Further information related to the processing of the payment instruction that may need to be acted upon by the creditor's agent. The instruction may relate to a level of service, or may be an instruction that has to be executed by the creditor's agent, or may be information required by the creditor's agent.
+message InstructionForCreditorAgent1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "Instruction3Code"];
+	string instr_inf = 2 [(gogoproto.casttype) = "Max140Text"];
+}
+
+// Further information related to the processing of the payment instruction that may need to be acted upon by the creditor's agent. The instruction may relate to a level of service, or may be an instruction that has to be executed by the creditor's agent, or may be information required by the creditor's agent.
+message InstructionForCreditorAgent2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "Instruction5Code"];
+	string instr_inf = 2 [(gogoproto.casttype) = "Max140Text"];
+}
+
+// Further information related to the processing of the payment instruction that may need to be acted upon by an other agent. The instruction may relate to a level of service, or may be an instruction that has to be executed by the creditor's agent, or may be information required by the other agent.
+message InstructionForNextAgent1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "Instruction4Code"];
+	string instr_inf = 2 [(gogoproto.casttype) = "Max140Text"];
+}
+
+// Set of elements that further identifies the type of local instruments being requested by the initiating party.
+message LocalInstrument2Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalLocalInstrument1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Provides further details related to a direct debit mandate signed between the creditor and the debtor.
+message MandateRelatedInformation12 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string mndt_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string dt_of_sgntr = 2 [(gogoproto.casttype) = "ISODate"];
+	string amdmnt_ind = 3 [(gogoproto.casttype) = "TrueFalseIndicator"];
+	github.ibm.com.gftn.iso20022.pacs00900108.AmendmentInformationDetails12 amdmnt_inf_dtls = 4;
+	string elctrnc_sgntr = 5 [(gogoproto.casttype) = "Max1025Text"];
+	string frst_colltn_dt = 6 [(gogoproto.casttype) = "ISODate"];
+	string fnl_colltn_dt = 7 [(gogoproto.casttype) = "ISODate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Frequency36Choice frqcy = 8;
+	github.ibm.com.gftn.iso20022.pacs00900108.MandateSetupReason1Choice rsn = 9;
+	string trckg_days = 10 [(gogoproto.casttype) = "Exact2NumericText"];
+}
+
+// Provides further details related to a direct debit mandate signed between the creditor and the debtor.
+message MandateRelatedInformation14 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string mndt_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string dt_of_sgntr = 2 [(gogoproto.casttype) = "ISODate"];
+	string amdmnt_ind = 3 [(gogoproto.casttype) = "TrueFalseIndicator"];
+	github.ibm.com.gftn.iso20022.pacs00900108.AmendmentInformationDetails13 amdmnt_inf_dtls = 4;
+	string elctrnc_sgntr = 5 [(gogoproto.casttype) = "Max1025Text"];
+	string frst_colltn_dt = 6 [(gogoproto.casttype) = "ISODate"];
+	string fnl_colltn_dt = 7 [(gogoproto.casttype) = "ISODate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Frequency36Choice frqcy = 8;
+	github.ibm.com.gftn.iso20022.pacs00900108.MandateSetupReason1Choice rsn = 9;
+	string trckg_days = 10 [(gogoproto.casttype) = "Exact2NumericText"];
+}
+
+// Specifies the reason for the setup of the mandate.
+message MandateSetupReason1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalMandateSetupReason1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max70Text"];
+}
+
+// Set of elements used to provide further information on the reason for the unable to apply investigation.
+message MissingOrIncorrectInformation3 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string amlreq = 1 [(gogoproto.casttype) = "AMLIndicator", (gogoproto.customname) = "AMLReq"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.UnableToApplyMissing1 mssng_inf = 2;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.UnableToApplyIncorrect1 incrrct_inf = 3;
+}
+
+// Specifies the reason for the transaction modification status.
+message ModificationStatusReason1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalPaymentModificationRejection1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Provides further details on the status of the cancellation request.
+message ModificationStatusReason2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 orgtr = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.ModificationStatusReason1Choice rsn = 2;
+	repeated string addtl_inf = 3;
+}
+
+// Information that locates and identifies a party.
+message NameAndAddress10 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string nm = 1 [(gogoproto.casttype) = "Max140Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.PostalAddress6 adr = 2;
+}
+
+// Set of elements used to provide detailed information on the number of transactions that are reported with a specific cancellation status.
+message NumberOfCancellationsPerStatus1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string dtld_nb_of_txs = 1 [(gogoproto.casttype) = "Max15NumericText"];
+	string dtld_sts = 2 [(gogoproto.casttype) = "CancellationIndividualStatus1Code"];
+	string dtld_ctrl_sum = 3 [(gogoproto.casttype) = "DecimalNumber"];
+}
+
+// Set of additional elements to provide detailed information on the number of transactions that are reported with a specific transaction status.
+message NumberOfTransactionsPerStatus1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string dtld_nb_of_txs = 1 [(gogoproto.casttype) = "Max15NumericText"];
+	string dtld_sts = 2 [(gogoproto.casttype) = "TransactionIndividualStatus1Code"];
+	string dtld_ctrl_sum = 3 [(gogoproto.casttype) = "DecimalNumber"];
+}
+
+// Set of elements used to provide detailed information on the number of transactions that are reported with a specific transaction status.
+message NumberOfTransactionsPerStatus5 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string dtld_nb_of_txs = 1 [(gogoproto.casttype) = "Max15NumericText"];
+	string dtld_sts = 2 [(gogoproto.casttype) = "ExternalPaymentTransactionStatus1Code"];
+	string dtld_ctrl_sum = 3 [(gogoproto.casttype) = "DecimalNumber"];
+}
+
+// Unique and unambiguous way to identify an organisation.
+message OrganisationIdentification29 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string any_bic = 1 [(gogoproto.casttype) = "AnyBICDec2014Identifier", (gogoproto.customname) = "AnyBIC"];
+	string lei = 2 [(gogoproto.casttype) = "LEIIdentifier", (gogoproto.customname) = "LEI"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.GenericOrganisationIdentification1 othr = 3;
+}
+
+// Unique and unambiguous way to identify an organisation.
+message OrganisationIdentification7 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string any_bic = 1 [(gogoproto.casttype) = "AnyBICIdentifier", (gogoproto.customname) = "AnyBIC"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.GenericOrganisationIdentification1 othr = 2;
+}
+
+// Unique and unambiguous way to identify an organisation.
+message OrganisationIdentification8 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string any_bic = 1 [(gogoproto.casttype) = "AnyBICIdentifier", (gogoproto.customname) = "AnyBIC"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.GenericOrganisationIdentification1 othr = 2;
+}
+
+// Sets of elements to identify a name of the organisation identification scheme.
+message OrganisationIdentificationSchemeName1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalOrganisationIdentification1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Provides the details on the original group, to which the message refers.
+message OriginalGroupHeader14 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string orgnl_grp_cxl_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Case5 rslvd_case = 2;
+	string orgnl_msg_id = 3 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_msg_nm_id = 4 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_cre_dt_tm = 5 [(gogoproto.casttype) = "ISODateTime"];
+	string orgnl_nb_of_txs = 6 [(gogoproto.casttype) = "Max15NumericText"];
+	string orgnl_ctrl_sum = 7 [(gogoproto.casttype) = "DecimalNumber"];
+	string grp_cxl_sts = 8 [(gogoproto.casttype) = "GroupCancellationStatus1Code"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.CancellationStatusReason4 cxl_sts_rsn_inf = 9;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.NumberOfTransactionsPerStatus1 nb_of_txs_per_cxl_sts = 10;
+}
+
+// Provides details on the original group, to which the message refers.
+message OriginalGroupHeader15 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string grp_cxl_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Case5 case = 2;
+	string orgnl_msg_id = 3 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_msg_nm_id = 4 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_cre_dt_tm = 5 [(gogoproto.casttype) = "ISODateTime"];
+	string nb_of_txs = 6 [(gogoproto.casttype) = "Max15NumericText"];
+	string ctrl_sum = 7 [(gogoproto.casttype) = "DecimalNumber"];
+	string grp_cxl = 8 [(gogoproto.casttype) = "GroupCancellationIndicator"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.PaymentCancellationReason5 cxl_rsn_inf = 9;
+}
+
+// Unique and unambiguous identifier of the group of transactions as assigned by the original instructing party.
+message OriginalGroupInformation29 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string orgnl_msg_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_msg_nm_id = 2 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_cre_dt_tm = 3 [(gogoproto.casttype) = "ISODateTime"];
+}
+
+// Provides the details on the reference and status of the original transactions, included in the original instruction, to which the cancellation request message applies.
+message OriginalPaymentInstruction30 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string orgnl_pmt_inf_cxl_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Case5 rslvd_case = 2;
+	string orgnl_pmt_inf_id = 3 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.OriginalGroupInformation29 orgnl_grp_inf = 4;
+	string orgnl_nb_of_txs = 5 [(gogoproto.casttype) = "Max15NumericText"];
+	string orgnl_ctrl_sum = 6 [(gogoproto.casttype) = "DecimalNumber"];
+	string pmt_inf_cxl_sts = 7 [(gogoproto.casttype) = "GroupCancellationStatus1Code"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.CancellationStatusReason4 cxl_sts_rsn_inf = 8;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.NumberOfCancellationsPerStatus1 nb_of_txs_per_cxl_sts = 9;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.PaymentTransaction103 tx_inf_and_sts = 10;
+}
+
+// Key elements used to refer the original transaction.
+message OriginalTransactionReference27 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount intr_bk_sttlm_amt = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.AmountType4Choice amt = 2;
+	string intr_bk_sttlm_dt = 3 [(gogoproto.casttype) = "ISODate"];
+	string reqd_colltn_dt = 4 [(gogoproto.casttype) = "ISODate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.DateAndDateTime2Choice reqd_exctn_dt = 5;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification125 cdtr_schme_id = 6;
+	github.ibm.com.gftn.iso20022.pacs00900108.SettlementInstruction4 sttlm_inf = 7;
+	github.ibm.com.gftn.iso20022.pacs00900108.PaymentTypeInformation25 pmt_tp_inf = 8;
+	string pmt_mtd = 9 [(gogoproto.casttype) = "PaymentMethod4Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.MandateRelatedInformation12 mndt_rltd_inf = 10;
+	github.ibm.com.gftn.iso20022.pacs00900108.RemittanceInformation15 rmt_inf = 11;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party35Choice ultmt_dbtr = 12;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party35Choice dbtr = 13;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount24 dbtr_acct = 14;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification5 dbtr_agt = 15;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount24 dbtr_agt_acct = 16;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification5 cdtr_agt = 17;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount24 cdtr_agt_acct = 18;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party35Choice cdtr = 19;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount24 cdtr_acct = 20;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party35Choice ultmt_cdtr = 21;
+	github.ibm.com.gftn.iso20022.pacs00900108.Purpose2Choice purp = 22;
+}
+
+// Key elements used to refer the original transaction.
+message OriginalTransactionReference28 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount intr_bk_sttlm_amt = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.AmountType4Choice amt = 2;
+	string intr_bk_sttlm_dt = 3 [(gogoproto.casttype) = "ISODate"];
+	string reqd_colltn_dt = 4 [(gogoproto.casttype) = "ISODate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.DateAndDateTime2Choice reqd_exctn_dt = 5;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 cdtr_schme_id = 6;
+	github.ibm.com.gftn.iso20022.pacs00900108.SettlementInstruction7 sttlm_inf = 7;
+	github.ibm.com.gftn.iso20022.pacs00900108.PaymentTypeInformation27 pmt_tp_inf = 8;
+	string pmt_mtd = 9 [(gogoproto.casttype) = "PaymentMethod4Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.MandateRelatedInformation14 mndt_rltd_inf = 10;
+	github.ibm.com.gftn.iso20022.pacs00900108.RemittanceInformation16 rmt_inf = 11;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party40Choice ultmt_dbtr = 12;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party40Choice dbtr = 13;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 dbtr_acct = 14;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 dbtr_agt = 15;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 dbtr_agt_acct = 16;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 cdtr_agt = 17;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 cdtr_agt_acct = 18;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party40Choice cdtr = 19;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 cdtr_acct = 20;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party40Choice ultmt_cdtr = 21;
+	github.ibm.com.gftn.iso20022.pacs00900108.Purpose2Choice purp = 22;
+}
+
+// Communication device number or electronic address used for communication.
+message OtherContact1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string chanl_tp = 1 [(gogoproto.casttype) = "Max4Text"];
+	string id = 2 [(gogoproto.casttype) = "Max128Text"];
+}
+
+// Nature or use of the account.
+message Party10Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.OrganisationIdentification7 org_id = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.PersonIdentification5 prvt_id = 2;
+}
+
+// Nature or use of the account.
+message Party34Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.OrganisationIdentification8 org_id = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.PersonIdentification13 prvt_id = 2;
+}
+
+// Identification of a person, an organisation or a financial institution.
+message Party35Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification125 pty = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification5 agt = 2;
+}
+
+// Nature or use of the account.
+message Party38Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.OrganisationIdentification29 org_id = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.PersonIdentification13 prvt_id = 2;
+}
+
+// Identification of a person, an organisation or a financial institution.
+message Party40Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 pty = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 agt = 2;
+}
+
+// Identification of a person, an organisation or a financial institution.
+message Party9Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification42 org_id = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification5 fiid = 2 [(gogoproto.customname) = "FIId"];
+}
+
+// Set of elements used to identify a person or an organisation.
+message PartyIdentification125 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string nm = 1 [(gogoproto.casttype) = "Max140Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.PostalAddress6 pstl_adr = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party34Choice id = 3;
+	string ctry_of_res = 4 [(gogoproto.casttype) = "CountryCode"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ContactDetails2 ctct_dtls = 5;
+}
+
+// Specifies the identification of a person or an organisation.
+message PartyIdentification135 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string nm = 1 [(gogoproto.casttype) = "Max140Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.PostalAddress24 pstl_adr = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party38Choice id = 3;
+	string ctry_of_res = 4 [(gogoproto.casttype) = "CountryCode"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Contact4 ctct_dtls = 5;
+}
+
+// Set of elements used to identify a person or an organisation.
+message PartyIdentification42 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string nm = 1 [(gogoproto.casttype) = "Max140Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.PostalAddress6 pstl_adr = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party10Choice id = 3;
+	string ctry_of_res = 4 [(gogoproto.casttype) = "CountryCode"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ContactDetails2 ctct_dtls = 5;
+}
+
+// Provides further details on the reason of the cancellation request.
+message PaymentCancellationReason5 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 orgtr = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.CancellationReason33Choice rsn = 2;
+	repeated string addtl_inf = 3;
+}
+
+// Set of elements used to provide further means of referencing a payment transaction.
+message PaymentIdentification3 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string instr_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string end_to_end_id = 2 [(gogoproto.casttype) = "Max35Text"];
+	string tx_id = 3 [(gogoproto.casttype) = "Max35Text"];
+	string clr_sys_ref = 4 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Provides further means of referencing a payment transaction.
+message PaymentIdentification7 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string instr_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string end_to_end_id = 2 [(gogoproto.casttype) = "Max35Text"];
+	string tx_id = 3 [(gogoproto.casttype) = "Max35Text"];
+	string uetr = 4 [(gogoproto.casttype) = "UUIDv4Identifier", (gogoproto.customname) = "UETR"];
+	string clr_sys_ref = 5 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Provides further details on the reason of the return of the transaction.
+message PaymentReturnReason6 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 orgtr = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.ReturnReason5Choice rsn = 2;
+	repeated string addtl_inf = 3;
+}
+
+// Provides further details on the reference and status on the original transactions, included in the original instruction, to which the cancellation request message applies.
+message PaymentTransaction102 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cxl_sts_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Case5 rslvd_case = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.OriginalGroupInformation29 orgnl_grp_inf = 3;
+	string orgnl_instr_id = 4 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_end_to_end_id = 5 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_tx_id = 6 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_clr_sys_ref = 7 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_uetr = 8 [(gogoproto.casttype) = "UUIDv4Identifier", (gogoproto.customname) = "OrgnlUETR"];
+	string tx_cxl_sts = 9 [(gogoproto.casttype) = "CancellationIndividualStatus1Code"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.CancellationStatusReason4 cxl_sts_rsn_inf = 10;
+	github.ibm.com.gftn.iso20022.pacs00900108.ResolutionData1 rsltn_rltd_inf = 11;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount orgnl_intr_bk_sttlm_amt = 12;
+	string orgnl_intr_bk_sttlm_dt = 13 [(gogoproto.casttype) = "ISODate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Party40Choice assgnr = 14;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party40Choice assgne = 15;
+	github.ibm.com.gftn.iso20022.pacs00900108.OriginalTransactionReference28 orgnl_tx_ref = 16;
+}
+
+// Provides reference and status information on the original transactions, included in the original instruction, to which the cancellation request message applies.
+message PaymentTransaction103 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cxl_sts_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Case5 rslvd_case = 2;
+	string orgnl_instr_id = 3 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_end_to_end_id = 4 [(gogoproto.casttype) = "Max35Text"];
+	string uetr = 5 [(gogoproto.casttype) = "UUIDv4Identifier", (gogoproto.customname) = "UETR"];
+	string tx_cxl_sts = 6 [(gogoproto.casttype) = "CancellationIndividualStatus1Code"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.CancellationStatusReason4 cxl_sts_rsn_inf = 7;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount orgnl_instd_amt = 8;
+	github.ibm.com.gftn.iso20022.pacs00900108.DateAndDateTime2Choice orgnl_reqd_exctn_dt = 9;
+	string orgnl_reqd_colltn_dt = 10 [(gogoproto.casttype) = "ISODate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.OriginalTransactionReference28 orgnl_tx_ref = 11;
+}
+
+// Provides reference and status information on the original transactions, included in the original instruction, to which the cancellation request message applies.
+message PaymentTransaction106 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cxl_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Case5 case = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.OriginalGroupInformation29 orgnl_grp_inf = 3;
+	string orgnl_instr_id = 4 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_end_to_end_id = 5 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_tx_id = 6 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_uetr = 7 [(gogoproto.casttype) = "UUIDv4Identifier", (gogoproto.customname) = "OrgnlUETR"];
+	string orgnl_clr_sys_ref = 8 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount orgnl_intr_bk_sttlm_amt = 9;
+	string orgnl_intr_bk_sttlm_dt = 10 [(gogoproto.casttype) = "ISODate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 assgnr = 11;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 assgne = 12;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.PaymentCancellationReason5 cxl_rsn_inf = 13;
+	github.ibm.com.gftn.iso20022.pacs00900108.OriginalTransactionReference28 orgnl_tx_ref = 14;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.SupplementaryData1 splmtry_data = 15;
+}
+
+// Set of elements used to provide further details of the type of payment.
+message PaymentTypeInformation21 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string instr_prty = 1 [(gogoproto.casttype) = "Priority2Code"];
+	string clr_chanl = 2 [(gogoproto.casttype) = "ClearingChannel2Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ServiceLevel8Choice svc_lvl = 3;
+	github.ibm.com.gftn.iso20022.pacs00900108.LocalInstrument2Choice lcl_instrm = 4;
+	github.ibm.com.gftn.iso20022.pacs00900108.CategoryPurpose1Choice ctgy_purp = 5;
+}
+
+// Set of elements used to provide further details of the type of payment.
+message PaymentTypeInformation25 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string instr_prty = 1 [(gogoproto.casttype) = "Priority2Code"];
+	string clr_chanl = 2 [(gogoproto.casttype) = "ClearingChannel2Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ServiceLevel8Choice svc_lvl = 3;
+	github.ibm.com.gftn.iso20022.pacs00900108.LocalInstrument2Choice lcl_instrm = 4;
+	string seq_tp = 5 [(gogoproto.casttype) = "SequenceType3Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.CategoryPurpose1Choice ctgy_purp = 6;
+}
+
+// Provides further details of the type of payment.
+message PaymentTypeInformation27 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string instr_prty = 1 [(gogoproto.casttype) = "Priority2Code"];
+	string clr_chanl = 2 [(gogoproto.casttype) = "ClearingChannel2Code"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.ServiceLevel8Choice svc_lvl = 3;
+	github.ibm.com.gftn.iso20022.pacs00900108.LocalInstrument2Choice lcl_instrm = 4;
+	string seq_tp = 5 [(gogoproto.casttype) = "SequenceType3Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.CategoryPurpose1Choice ctgy_purp = 6;
+}
+
+// Provides further details of the type of payment.
+message PaymentTypeInformation28 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string instr_prty = 1 [(gogoproto.casttype) = "Priority2Code"];
+	string clr_chanl = 2 [(gogoproto.casttype) = "ClearingChannel2Code"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.ServiceLevel8Choice svc_lvl = 3;
+	github.ibm.com.gftn.iso20022.pacs00900108.LocalInstrument2Choice lcl_instrm = 4;
+	github.ibm.com.gftn.iso20022.pacs00900108.CategoryPurpose1Choice ctgy_purp = 5;
+}
+
+// Unique and unambiguous way to identify a person.
+message PersonIdentification13 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.DateAndPlaceOfBirth1 dt_and_plc_of_birth = 1;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.GenericPersonIdentification1 othr = 2;
+}
+
+// Unique and unambiguous way to identify a person.
+message PersonIdentification5 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.DateAndPlaceOfBirth dt_and_plc_of_birth = 1;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.GenericPersonIdentification1 othr = 2;
+}
+
+// Sets of elements to identify a name of the identification scheme.
+message PersonIdentificationSchemeName1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalPersonIdentification1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Information that locates and identifies a specific address, as defined by postal services.
+message PostalAddress24 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.AddressType3Choice adr_tp = 1;
+	string dept = 2 [(gogoproto.casttype) = "Max70Text"];
+	string sub_dept = 3 [(gogoproto.casttype) = "Max70Text"];
+	string strt_nm = 4 [(gogoproto.casttype) = "Max70Text"];
+	string bldg_nb = 5 [(gogoproto.casttype) = "Max16Text"];
+	string bldg_nm = 6 [(gogoproto.casttype) = "Max35Text"];
+	string flr = 7 [(gogoproto.casttype) = "Max70Text"];
+	string pst_bx = 8 [(gogoproto.casttype) = "Max16Text"];
+	string room = 9 [(gogoproto.casttype) = "Max70Text"];
+	string pst_cd = 10 [(gogoproto.casttype) = "Max16Text"];
+	string twn_nm = 11 [(gogoproto.casttype) = "Max35Text"];
+	string twn_lctn_nm = 12 [(gogoproto.casttype) = "Max35Text"];
+	string dstrct_nm = 13 [(gogoproto.casttype) = "Max35Text"];
+	string ctry_sub_dvsn = 14 [(gogoproto.casttype) = "Max35Text"];
+	string ctry = 15 [(gogoproto.casttype) = "CountryCode"];
+	repeated string adr_line = 16;
+}
+
+// Information that locates and identifies a specific address, as defined by postal services.
+message PostalAddress6 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string adr_tp = 1 [(gogoproto.casttype) = "AddressType2Code"];
+	string dept = 2 [(gogoproto.casttype) = "Max70Text"];
+	string sub_dept = 3 [(gogoproto.casttype) = "Max70Text"];
+	string strt_nm = 4 [(gogoproto.casttype) = "Max70Text"];
+	string bldg_nb = 5 [(gogoproto.casttype) = "Max16Text"];
+	string pst_cd = 6 [(gogoproto.casttype) = "Max16Text"];
+	string twn_nm = 7 [(gogoproto.casttype) = "Max35Text"];
+	string ctry_sub_dvsn = 8 [(gogoproto.casttype) = "Max35Text"];
+	string ctry = 9 [(gogoproto.casttype) = "CountryCode"];
+	repeated string adr_line = 10;
+}
+
+// Information related to a proxy  identification of the account.
+message ProxyAccountIdentification1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ProxyAccountType1Choice tp = 1;
+	string id = 2 [(gogoproto.casttype) = "Max2048Text"];
+}
+
+// Specifies the scheme used for the identification of an account alias.
+message ProxyAccountType1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalProxyAccountType1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Specifies the underlying reason for the payment transaction.
+// Usage: Purpose is used by the end-customers, that is initiating party, (ultimate) debtor, (ultimate) creditor to provide information concerning the nature of the payment. Purpose is a content element, which is not used for processing by any of the agents involved in the payment chain.
+message Purpose2Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalPurpose1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Set of elements used to identify the documents referred to in the remittance information.
+message ReferredDocumentInformation7 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ReferredDocumentType4 tp = 1;
+	string nb = 2 [(gogoproto.casttype) = "Max35Text"];
+	string rltd_dt = 3 [(gogoproto.casttype) = "ISODate"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.DocumentLineInformation1 line_dtls = 4;
+}
+
+// Specifies the type of the document referred in the remittance information.
+message ReferredDocumentType3Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "DocumentType6Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Specifies the type of the document referred in the remittance information.
+message ReferredDocumentType4 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ReferredDocumentType3Choice cd_or_prtry = 1;
+	string issr = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Entity requiring the regulatory reporting information.
+message RegulatoryAuthority2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string nm = 1 [(gogoproto.casttype) = "Max140Text"];
+	string ctry = 2 [(gogoproto.casttype) = "CountryCode"];
+}
+
+// Information needed due to regulatory and/or statutory requirements.
+message RegulatoryReporting3 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string dbt_cdt_rptg_ind = 1 [(gogoproto.casttype) = "RegulatoryReportingType1Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.RegulatoryAuthority2 authrty = 2;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.StructuredRegulatoryReporting3 dtls = 3;
+}
+
+// Nature of the amount and currency on a document referred to in the remittance section, typically either the original amount due/payable or the amount actually remitted for the referenced document.
+message RemittanceAmount2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount due_pybl_amt = 1;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.DiscountAmountAndType1 dscnt_apld_amt = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount cdt_note_amt = 3;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.TaxAmountAndType1 tax_amt = 4;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.DocumentAdjustment1 adjstmnt_amt_and_rsn = 5;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount rmtd_amt = 6;
+}
+
+// Nature of the amount and currency on a document referred to in the remittance section, typically either the original amount due/payable or the amount actually remitted for the referenced document.
+message RemittanceAmount3 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount due_pybl_amt = 1;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.DiscountAmountAndType1 dscnt_apld_amt = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount cdt_note_amt = 3;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.TaxAmountAndType1 tax_amt = 4;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.DocumentAdjustment1 adjstmnt_amt_and_rsn = 5;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount rmtd_amt = 6;
+}
+
+// Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system.
+message RemittanceInformation15 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	repeated string ustrd = 1;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.StructuredRemittanceInformation15 strd = 2;
+}
+
+// Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system.
+message RemittanceInformation16 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	repeated string ustrd = 1;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.StructuredRemittanceInformation16 strd = 2;
+}
+
+// Information supplied to enable the matching of an entry with the items that the transfer is intended to settle.
+message RemittanceInformation2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	repeated string ustrd = 1;
+}
+
+// Set of elements used to provide information on the remittance advice.
+message RemittanceLocation4 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string rmt_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.RemittanceLocationDetails1 rmt_lctn_dtls = 2;
+}
+
+// Provides information on the remittance advice.
+message RemittanceLocationDetails1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string mtd = 1 [(gogoproto.casttype) = "RemittanceLocationMethod2Code"];
+	string elctrnc_adr = 2 [(gogoproto.casttype) = "Max2048Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.NameAndAddress10 pstl_adr = 3;
+}
+
+// Specifies additional information as expected by the party that the investigation performs the expected actions for its resolution.
+message ResolutionData1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string end_to_end_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string tx_id = 2 [(gogoproto.casttype) = "Max35Text"];
+	string uetr = 3 [(gogoproto.casttype) = "UUIDv4Identifier", (gogoproto.customname) = "UETR"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount intr_bk_sttlm_amt = 4;
+	string intr_bk_sttlm_dt = 5 [(gogoproto.casttype) = "ISODate"];
+	string clr_chanl = 6 [(gogoproto.casttype) = "ClearingChannel2Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.Compensation2 compstn = 7;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.Charges7 chrgs = 8;
+}
+
+// Specifies the reason for the return of the transaction.
+message ReturnReason5Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalReturnReason1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Specifies the service level of the transaction.
+message ServiceLevel8Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalServiceLevel1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Information on the occurred settlement time(s) of the payment transaction.
+message SettlementDateTimeIndication1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string dbt_dt_tm = 1 [(gogoproto.casttype) = "ISODateTime"];
+	string cdt_dt_tm = 2 [(gogoproto.casttype) = "ISODateTime"];
+}
+
+// Provides further details on the settlement of the instruction.
+message SettlementInstruction4 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string sttlm_mtd = 1 [(gogoproto.casttype) = "SettlementMethod1Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount24 sttlm_acct = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.ClearingSystemIdentification3Choice clr_sys = 3;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification5 instg_rmbrsmnt_agt = 4;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount24 instg_rmbrsmnt_agt_acct = 5;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification5 instd_rmbrsmnt_agt = 6;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount24 instd_rmbrsmnt_agt_acct = 7;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification5 thrd_rmbrsmnt_agt = 8;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount24 thrd_rmbrsmnt_agt_acct = 9;
+}
+
+// Provides further details on the settlement of the instruction.
+message SettlementInstruction6 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 instg_rmbrsmnt_agt = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 instg_rmbrsmnt_agt_acct = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 instd_rmbrsmnt_agt = 3;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 instd_rmbrsmnt_agt_acct = 4;
+}
+
+// Provides further details on the settlement of the instruction.
+message SettlementInstruction7 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string sttlm_mtd = 1 [(gogoproto.casttype) = "SettlementMethod1Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 sttlm_acct = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.ClearingSystemIdentification3Choice clr_sys = 3;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 instg_rmbrsmnt_agt = 4;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 instg_rmbrsmnt_agt_acct = 5;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 instd_rmbrsmnt_agt = 6;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 instd_rmbrsmnt_agt_acct = 7;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 thrd_rmbrsmnt_agt = 8;
+	github.ibm.com.gftn.iso20022.pacs00900108.CashAccount38 thrd_rmbrsmnt_agt_acct = 9;
+}
+
+// Provides information on the requested settlement time(s) of the payment instruction.
+message SettlementTimeRequest2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string clstm = 1 [(gogoproto.casttype) = "ISOTime", (gogoproto.customname) = "CLSTm"];
+	string till_tm = 2 [(gogoproto.casttype) = "ISOTime"];
+	string fr_tm = 3 [(gogoproto.casttype) = "ISOTime"];
+	string rjct_tm = 4 [(gogoproto.casttype) = "ISOTime"];
+}
+
+// Specifies the reason for the status of the transaction.
+message StatusReason6Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalStatusReason1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Set of elements used to provide information on the status reason of the transaction.
+message StatusReasonInformation11 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification125 orgtr = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.StatusReason6Choice rsn = 2;
+	repeated string addtl_inf = 3;
+}
+
+// Information needed due to regulatory and statutory requirements.
+message StructuredRegulatoryReporting3 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string tp = 1 [(gogoproto.casttype) = "Max35Text"];
+	string dt = 2 [(gogoproto.casttype) = "ISODate"];
+	string ctry = 3 [(gogoproto.casttype) = "CountryCode"];
+	string cd = 4 [(gogoproto.casttype) = "Max10Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount amt = 5;
+	repeated string inf = 6;
+}
+
+// Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in a structured form.
+message StructuredRemittanceInformation15 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.ReferredDocumentInformation7 rfrd_doc_inf = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.RemittanceAmount2 rfrd_doc_amt = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.CreditorReferenceInformation2 cdtr_ref_inf = 3;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification125 invcr = 4;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification125 invcee = 5;
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxInformation7 tax_rmt = 6;
+	github.ibm.com.gftn.iso20022.pacs00900108.Garnishment2 grnshmt_rmt = 7;
+	repeated string addtl_rmt_inf = 8;
+}
+
+// Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in a structured form.
+message StructuredRemittanceInformation16 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.ReferredDocumentInformation7 rfrd_doc_inf = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.RemittanceAmount2 rfrd_doc_amt = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.CreditorReferenceInformation2 cdtr_ref_inf = 3;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 invcr = 4;
+	github.ibm.com.gftn.iso20022.pacs00900108.PartyIdentification135 invcee = 5;
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxInformation7 tax_rmt = 6;
+	github.ibm.com.gftn.iso20022.pacs00900108.Garnishment3 grnshmt_rmt = 7;
+	repeated string addtl_rmt_inf = 8;
+}
+
+// Additional information that can not be captured in the structured fields and/or any other specific block.
+message SupplementaryData1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string plc_and_nm = 1 [(gogoproto.casttype) = "Max350Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.SupplementaryDataEnvelope1 envlp = 2;
+}
+
+// Technical component that contains the validated supplementary data information. This technical envelope allows to segregate the supplementary data information from any other information.
+message SupplementaryDataEnvelope1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Max34Text"];
+}
+
+// Set of elements used to provide information on the tax amount(s) of tax record.
+message TaxAmount2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string rate = 1 [(gogoproto.casttype) = "PercentageRate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount taxbl_base_amt = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount ttl_amt = 3;
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.TaxRecordDetails2 dtls = 4;
+}
+
+// Specifies the amount with a specific type.
+message TaxAmountAndType1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxAmountType1Choice tp = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount amt = 2;
+}
+
+// Specifies the amount type.
+message TaxAmountType1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalTaxAmountType1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Details of the authorised tax paying party.
+message TaxAuthorisation1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string titl = 1 [(gogoproto.casttype) = "Max35Text"];
+	string nm = 2 [(gogoproto.casttype) = "Max140Text"];
+}
+
+// Amount of money due to the government or tax authority, according to various pre-defined parameters such as thresholds or income.
+message TaxCharges2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string rate = 2 [(gogoproto.casttype) = "PercentageRate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount amt = 3;
+}
+
+// Details about tax paid, or to be paid, to the government in accordance with the law, including pre-defined parameters such as thresholds and type of account.
+message TaxInformation6 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxParty1 cdtr = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxParty2 dbtr = 2;
+	string admstn_zn = 3 [(gogoproto.casttype) = "Max35Text"];
+	string ref_nb = 4 [(gogoproto.casttype) = "Max140Text"];
+	string mtd = 5 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount ttl_taxbl_base_amt = 6;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount ttl_tax_amt = 7;
+	string dt = 8 [(gogoproto.casttype) = "ISODate"];
+	string seq_nb = 9 [(gogoproto.casttype) = "Number"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.TaxRecord2 rcrd = 10;
+}
+
+// Details about tax paid, or to be paid, to the government in accordance with the law, including pre-defined parameters such as thresholds and type of account.
+message TaxInformation7 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxParty1 cdtr = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxParty2 dbtr = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxParty2 ultmt_dbtr = 3;
+	string admstn_zone = 4 [(gogoproto.casttype) = "Max35Text"];
+	string ref_nb = 5 [(gogoproto.casttype) = "Max140Text"];
+	string mtd = 6 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount ttl_taxbl_base_amt = 7;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount ttl_tax_amt = 8;
+	string dt = 9 [(gogoproto.casttype) = "ISODate"];
+	string seq_nb = 10 [(gogoproto.casttype) = "Number"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.TaxRecord2 rcrd = 11;
+}
+
+// Details about tax paid, or to be paid, to the government in accordance with the law, including pre-defined parameters such as thresholds and type of account.
+message TaxInformation8 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxParty1 cdtr = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxParty2 dbtr = 2;
+	string admstn_zone = 3 [(gogoproto.casttype) = "Max35Text"];
+	string ref_nb = 4 [(gogoproto.casttype) = "Max140Text"];
+	string mtd = 5 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount ttl_taxbl_base_amt = 6;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount ttl_tax_amt = 7;
+	string dt = 8 [(gogoproto.casttype) = "ISODate"];
+	string seq_nb = 9 [(gogoproto.casttype) = "Number"];
+	repeated github.ibm.com.gftn.iso20022.pacs00900108.TaxRecord2 rcrd = 10;
+}
+
+// Details about the entity involved in the tax paid or to be paid.
+message TaxParty1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string tax_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string regn_id = 2 [(gogoproto.casttype) = "Max35Text"];
+	string tax_tp = 3 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Details about the entity involved in the tax paid or to be paid.
+message TaxParty2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string tax_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string regn_id = 2 [(gogoproto.casttype) = "Max35Text"];
+	string tax_tp = 3 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxAuthorisation1 authstn = 4;
+}
+
+// Period of time details related to the tax payment.
+message TaxPeriod2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string yr = 1 [(gogoproto.casttype) = "ISODate"];
+	string tp = 2 [(gogoproto.casttype) = "TaxRecordPeriod1Code"];
+	github.ibm.com.gftn.iso20022.pacs00900108.DatePeriod2 fr_to_dt = 3;
+}
+
+// Set of elements used to define the tax record.
+message TaxRecord2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string tp = 1 [(gogoproto.casttype) = "Max35Text"];
+	string ctgy = 2 [(gogoproto.casttype) = "Max35Text"];
+	string ctgy_dtls = 3 [(gogoproto.casttype) = "Max35Text"];
+	string dbtr_sts = 4 [(gogoproto.casttype) = "Max35Text"];
+	string cert_id = 5 [(gogoproto.casttype) = "Max35Text"];
+	string frms_cd = 6 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxPeriod2 prd = 7;
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxAmount2 tax_amt = 8;
+	string addtl_inf = 9 [(gogoproto.casttype) = "Max140Text"];
+}
+
+// Provides information on the individual tax amount(s) per period of the tax record.
+message TaxRecordDetails2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.TaxPeriod2 prd = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount amt = 2;
+}
+
+// Provides further details on the parties specific to the individual transaction.
+message TransactionParties7 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party40Choice ultmt_dbtr = 1;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party40Choice dbtr = 2;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party40Choice initg_pty = 3;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 dbtr_agt = 4;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 prvs_instg_agt1 = 5;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 prvs_instg_agt2 = 6;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 prvs_instg_agt3 = 7;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 intrmy_agt1 = 8;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 intrmy_agt2 = 9;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 intrmy_agt3 = 10;
+	github.ibm.com.gftn.iso20022.pacs00900108.BranchAndFinancialInstitutionIdentification6 cdtr_agt = 11;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party40Choice cdtr = 12;
+	github.ibm.com.gftn.iso20022.pacs00900108.Party40Choice ultmt_cdtr = 13;
+}
+
+// Specifies the details of incorrect information.
+message UnableToApplyIncorrect1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "UnableToApplyIncorrectInformation4Code"];
+	string addtl_incrrct_inf = 2 [(gogoproto.casttype) = "Max140Text"];
+}
+
+// Specifies the details of missing information.
+message UnableToApplyMissing1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "UnableToApplyMissingInformation3Code"];
+	string addtl_mssng_inf = 2 [(gogoproto.casttype) = "Max140Text"];
+}
+
+// Unique identification, as assigned by the first instructing agent, to unambiguously identify the group of transactions.
+message UnderlyingGroupInformation1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string orgnl_msg_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_msg_nm_id = 2 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_cre_dt_tm = 3 [(gogoproto.casttype) = "ISODateTime"];
+	string orgnl_msg_dlvry_chanl = 4 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Provides further details on the original payment initiation, to which the investigation message refers.
+message UnderlyingPaymentInstruction5 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.UnderlyingGroupInformation1 orgnl_grp_inf = 1;
+	string orgnl_pmt_inf_id = 2 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_instr_id = 3 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_end_to_end_id = 4 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_uetr = 5 [(gogoproto.casttype) = "UUIDv4Identifier", (gogoproto.customname) = "OrgnlUETR"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount orgnl_instd_amt = 6;
+	github.ibm.com.gftn.iso20022.pacs00900108.DateAndDateTime2Choice reqd_exctn_dt = 7;
+	string reqd_colltn_dt = 8 [(gogoproto.casttype) = "ISODate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.OriginalTransactionReference28 orgnl_tx_ref = 9;
+}
+
+// Provides further details on the original payment transaction, to which the investigation message refers.
+message UnderlyingPaymentTransaction4 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.UnderlyingGroupInformation1 orgnl_grp_inf = 1;
+	string orgnl_instr_id = 2 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_end_to_end_id = 3 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_tx_id = 4 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_uetr = 5 [(gogoproto.casttype) = "UUIDv4Identifier", (gogoproto.customname) = "OrgnlUETR"];
+	github.ibm.com.gftn.iso20022.pacs00900108.ActiveOrHistoricCurrencyAndAmount orgnl_intr_bk_sttlm_amt = 6;
+	string orgnl_intr_bk_sttlm_dt = 7 [(gogoproto.casttype) = "ISODate"];
+	github.ibm.com.gftn.iso20022.pacs00900108.OriginalTransactionReference28 orgnl_tx_ref = 8;
+}
+
+// Provides further details on the underlying statement entry, to which the investigation message refers.
+message UnderlyingStatementEntry3 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.pacs00900108.OriginalGroupInformation29 orgnl_grp_inf = 1;
+	string orgnl_stmt_id = 2 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_ntry_id = 3 [(gogoproto.casttype) = "Max35Text"];
+	string orgnl_uetr = 4 [(gogoproto.casttype) = "UUIDv4Identifier", (gogoproto.customname) = "OrgnlUETR"];
+}
+
+message SendPayload { 				string msg_id = 1 [(gogoproto.nullable) = false]; 				string msg_type = 2 [(gogoproto.nullable) = false]; 				bytes message = 3 [(gogoproto.nullable) = false]; 				string ofi_id = 4 [(gogoproto.nullable) = false]; 				string ofi_public_key = 5 [(gogoproto.nullable) = false]; 				string rfi_id = 6 [(gogoproto.nullable) = false]; 				string instruction_id = 7 [(gogoproto.nullable) = false]; 				string original_instruction_id = 8 [(gogoproto.nullable) = false]; 				string original_msg_id = 9 [(gogoproto.nullable) = false]; 			} 			message Message { 				github.ibm.com.gftn.iso20022.pacs00900108.FinancialInstitutionCreditTransferV08 body = 1 [(gogoproto.nullable) = false]; 				github.ibm.com.gftn.iso20022.pacs00900108.BusinessApplicationHeaderV01 head = 2 [(gogoproto.nullable) = false]; 			}

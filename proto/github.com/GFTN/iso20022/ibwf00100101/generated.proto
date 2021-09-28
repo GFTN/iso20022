@@ -1,0 +1,382 @@
+syntax = "proto3";
+package github.ibm.com.gftn.iso20022.ibwf00100101;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+option (gogoproto.protosizer_all) = true;
+option (gogoproto.sizer_all) = false;
+option go_package = "ibwf00100101";
+
+message AccountIdentification4Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string iban = 1 [(gogoproto.casttype) = "IBAN2007Identifier", (gogoproto.customname) = "IBAN"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.GenericAccountIdentification1 othr = 2;
+}
+
+message AccountSchemeName1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalAccountIdentification1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+message ActiveCurrencyAndAmount {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	double value = 1;
+	string ccy = 2 [(gogoproto.casttype) = "ActiveCurrencyCode"];
+}
+
+message BranchAndFinancialInstitutionIdentification5 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.ibwf00100101.FinancialInstitutionIdentification8 fin_instn_id = 1;
+	github.ibm.com.gftn.iso20022.ibwf00100101.BranchData2 brnch_id = 2;
+}
+
+message BranchData2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string nm = 2 [(gogoproto.casttype) = "Max140Text"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.PostalAddress6 pstl_adr = 3;
+}
+
+// Specifies the Business Application Header of the Business Message.
+// Can be used when replying to a query; can also be used when canceling or amending.
+message BusinessApplicationHeader1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string char_set = 1 [(gogoproto.casttype) = "UnicodeChartsCode"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.Party9Choice fr = 2;
+	github.ibm.com.gftn.iso20022.ibwf00100101.Party9Choice to = 3;
+	string biz_msg_idr = 4 [(gogoproto.casttype) = "Max35Text"];
+	string msg_def_idr = 5 [(gogoproto.casttype) = "Max35Text"];
+	string biz_svc = 6 [(gogoproto.casttype) = "Max35Text"];
+	string cre_dt = 7 [(gogoproto.casttype) = "ISONormalisedDateTime"];
+	string cpy_dplct = 8 [(gogoproto.casttype) = "CopyDuplicate1Code"];
+	string pssbl_dplct = 9 [(gogoproto.casttype) = "YesNoIndicator"];
+	string prty = 10 [(gogoproto.casttype) = "BusinessMessagePriorityCode"];
+	string sgntr = 11 [(gogoproto.casttype) = "SignatureEnvelope"];
+}
+
+// The Business Layer deals with Business Messages. The behaviour of the Business Messages is fully described by the Business Transaction and the structure of the Business Messages is fully described by the Message Definitions and related Message Rules, Rules and Market Practices. All of which are registered in the ISO 20022 Repository.
+// A single new Business Message (with its accompagnying business application header) is created - by the sending MessagingEndpoint - for each business event; that is each interaction in a Business Transaction. A Business Message adheres to the following principles:
+// " A Business Message (and its business application header) must not contain information about the Message Transport System or the mechanics or mechanism of message sending, transportation, or receipt.
+// " A Business Message must be comprehensible outside of the context of the Transport Message. That is the Business Message must not require knowledge of the Transport Message to be understood.
+// " A Business Message may contain headers, footers, and envelopes that are meaningful for the business. When present, they are treated as any other message content, which means that they are considered part of the Message Definition of the Business Message and as such will be part of the ISO 20022 Repository.
+// " A Business Message refers to Business Actors by their Name. Each instance of a Business Actor has one Name. The Business Actor must not be referred to in the Transport Layer.
+// Specific usage of this BusinessMessageHeader may be defined by the relevant SEG.
+message BusinessApplicationHeaderV01 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string char_set = 1 [(gogoproto.casttype) = "UnicodeChartsCode"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.Party9Choice fr = 2;
+	github.ibm.com.gftn.iso20022.ibwf00100101.Party9Choice to = 3;
+	string biz_msg_idr = 4 [(gogoproto.casttype) = "Max35Text"];
+	string msg_def_idr = 5 [(gogoproto.casttype) = "Max35Text"];
+	string biz_svc = 6 [(gogoproto.casttype) = "Max35Text"];
+	string cre_dt = 7 [(gogoproto.casttype) = "ISONormalisedDateTime"];
+	string cpy_dplct = 8 [(gogoproto.casttype) = "CopyDuplicate1Code"];
+	string pssbl_dplct = 9 [(gogoproto.casttype) = "YesNoIndicator"];
+	string prty = 10 [(gogoproto.casttype) = "BusinessMessagePriorityCode"];
+	string sgntr = 11 [(gogoproto.casttype) = "SignatureEnvelope"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.BusinessApplicationHeader1 rltd = 12;
+}
+
+message CashAccount24 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.ibwf00100101.AccountIdentification4Choice id = 1;
+	github.ibm.com.gftn.iso20022.ibwf00100101.CashAccountType2Choice tp = 2;
+	string ccy = 3 [(gogoproto.casttype) = "ActiveOrHistoricCurrencyCode"];
+	string nm = 4 [(gogoproto.casttype) = "Max70Text"];
+}
+
+message CashAccountType2Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalCashAccountType1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+message CategoryPurpose1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalCategoryPurpose1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+message ClearingSystemIdentification2Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalClearingSystemIdentification1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+message ClearingSystemIdentification3Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalCashClearingSystem1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+message ClearingSystemMemberIdentification2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.ibwf00100101.ClearingSystemIdentification2Choice clr_sys_id = 1;
+	string mmb_id = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+message ComplianceResponse1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string inf_sts = 1 [(gogoproto.casttype) = "InfoStatus1"];
+	string txn_sts = 2 [(gogoproto.casttype) = "TransactionStatus1"];
+	string dst_inf = 3 [(gogoproto.casttype) = "DestinationInfo1"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.PaymentIdentification3 pmt_id = 4;
+}
+
+// Communication device number or electronic address used for communication.
+message ContactDetails2 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string nm_prfx = 1 [(gogoproto.casttype) = "NamePrefix1Code"];
+	string nm = 2 [(gogoproto.casttype) = "Max140Text"];
+	string phne_nb = 3 [(gogoproto.casttype) = "PhoneNumber"];
+	string mob_nb = 4 [(gogoproto.casttype) = "PhoneNumber"];
+	string fax_nb = 5 [(gogoproto.casttype) = "PhoneNumber"];
+	string email_adr = 6 [(gogoproto.casttype) = "Max2048Text"];
+	string othr = 7 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Date and place of birth of a person.
+message DateAndPlaceOfBirth {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.ibwf00100101.ISODate birth_dt = 1;
+	string prvc_of_birth = 2 [(gogoproto.casttype) = "Max35Text"];
+	string city_of_birth = 3 [(gogoproto.casttype) = "Max35Text"];
+	string ctry_of_birth = 4 [(gogoproto.casttype) = "CountryCode"];
+}
+
+message FederationComplianceResponse1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.ibwf00100101.GroupHeader70 grp_hdr = 1;
+	repeated github.ibm.com.gftn.iso20022.ibwf00100101.ResponseBody1 res_body = 2;
+}
+
+message FederationResponse1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string str_adr = 1 [(gogoproto.casttype) = "Max140Text"];
+	string acc_id = 2 [(gogoproto.casttype) = "Max140Text"];
+	string me_typ = 3 [(gogoproto.casttype) = "MemoType1"];
+	string mem = 4 [(gogoproto.casttype) = "Memo1"];
+	string fed_sts = 5 [(gogoproto.casttype) = "FederationStatus1"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.PaymentIdentification3 pmt_id = 6;
+}
+
+message FinancialIdentificationSchemeName1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalFinancialInstitutionIdentification1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+message FinancialInstitutionIdentification8 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string bicfi = 1 [(gogoproto.casttype) = "BICFIIdentifier", (gogoproto.customname) = "BICFI"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.ClearingSystemMemberIdentification2 clr_sys_mmb_id = 2;
+	string nm = 3 [(gogoproto.casttype) = "Max140Text"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.PostalAddress6 pstl_adr = 4;
+	github.ibm.com.gftn.iso20022.ibwf00100101.GenericFinancialIdentification1 othr = 5;
+}
+
+message GenericAccountIdentification1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Max34Text"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.AccountSchemeName1Choice schme_nm = 2;
+	string issr = 3 [(gogoproto.casttype) = "Max35Text"];
+}
+
+message GenericFinancialIdentification1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.FinancialIdentificationSchemeName1Choice schme_nm = 2;
+	string issr = 3 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Information related to an identification of an organisation.
+message GenericOrganisationIdentification1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.OrganisationIdentificationSchemeName1Choice schme_nm = 2;
+	string issr = 3 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Information related to an identification of a person.
+message GenericPersonIdentification1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string id = 1 [(gogoproto.casttype) = "Max35Text"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.PersonIdentificationSchemeName1Choice schme_nm = 2;
+	string issr = 3 [(gogoproto.casttype) = "Max35Text"];
+}
+
+message GroupHeader70 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string msg_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string cre_dt_tm = 2 [(gogoproto.casttype) = "DateTimeString"];
+	bool btch_bookg = 3;
+	string nb_of_txs = 4 [(gogoproto.casttype) = "Max15NumericText"];
+	double ctrl_sum = 5;
+	github.ibm.com.gftn.iso20022.ibwf00100101.ActiveCurrencyAndAmount ttl_intr_bk_sttlm_amt = 6;
+	string intr_bk_sttlm_dt = 7 [(gogoproto.casttype) = "DateString"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.SettlementInstruction4 sttlm_inf = 8;
+	github.ibm.com.gftn.iso20022.ibwf00100101.PaymentTypeInformation21 pmt_tp_inf = 9;
+	github.ibm.com.gftn.iso20022.ibwf00100101.BranchAndFinancialInstitutionIdentification5 instg_agt = 10;
+	github.ibm.com.gftn.iso20022.ibwf00100101.BranchAndFinancialInstitutionIdentification5 instd_agt = 11;
+}
+
+message ISODate {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+}
+
+message LocalInstrument2Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalLocalInstrument1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Unique and unambiguous way to identify an organisation.
+message OrganisationIdentification7 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string any_bic = 1 [(gogoproto.casttype) = "AnyBICIdentifier", (gogoproto.customname) = "AnyBIC"];
+	repeated github.ibm.com.gftn.iso20022.ibwf00100101.GenericOrganisationIdentification1 othr = 2;
+}
+
+// Sets of elements to identify a name of the organisation identification scheme.
+message OrganisationIdentificationSchemeName1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalOrganisationIdentification1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+// Nature or use of the account.
+message Party10Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.ibwf00100101.OrganisationIdentification7 org_id = 1;
+	github.ibm.com.gftn.iso20022.ibwf00100101.PersonIdentification5 prvt_id = 2;
+}
+
+// Identification of a person, an organisation or a financial institution.
+message Party9Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.ibwf00100101.PartyIdentification42 org_id = 1;
+	github.ibm.com.gftn.iso20022.ibwf00100101.BranchAndFinancialInstitutionIdentification5 fiid = 2 [(gogoproto.customname) = "FIId"];
+}
+
+// Set of elements used to identify a person or an organisation.
+message PartyIdentification42 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string nm = 1 [(gogoproto.casttype) = "Max140Text"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.PostalAddress6 pstl_adr = 2;
+	github.ibm.com.gftn.iso20022.ibwf00100101.Party10Choice id = 3;
+	string ctry_of_res = 4 [(gogoproto.casttype) = "CountryCode"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.ContactDetails2 ctct_dtls = 5;
+}
+
+message PaymentIdentification3 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string instr_id = 1 [(gogoproto.casttype) = "Max35Text"];
+	string end_to_end_id = 2 [(gogoproto.casttype) = "Max35Text"];
+	string tx_id = 3 [(gogoproto.casttype) = "Max35Text"];
+	string clr_sys_ref = 4 [(gogoproto.casttype) = "Max35Text"];
+}
+
+message PaymentTypeInformation21 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string instr_prty = 1 [(gogoproto.casttype) = "Priority2Code"];
+	string clr_chanl = 2 [(gogoproto.casttype) = "ClearingChannel2Code"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.ServiceLevel8Choice svc_lvl = 3;
+	github.ibm.com.gftn.iso20022.ibwf00100101.LocalInstrument2Choice lcl_instrm = 4;
+	github.ibm.com.gftn.iso20022.ibwf00100101.CategoryPurpose1Choice ctgy_purp = 5;
+}
+
+// Unique and unambiguous way to identify a person.
+message PersonIdentification5 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.ibwf00100101.DateAndPlaceOfBirth dt_and_plc_of_birth = 1;
+	repeated github.ibm.com.gftn.iso20022.ibwf00100101.GenericPersonIdentification1 othr = 2;
+}
+
+// Sets of elements to identify a name of the identification scheme.
+message PersonIdentificationSchemeName1Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalPersonIdentification1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+message PostalAddress6 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string adr_tp = 1 [(gogoproto.casttype) = "AddressType2Code"];
+	string dept = 2 [(gogoproto.casttype) = "Max70Text"];
+	string sub_dept = 3 [(gogoproto.casttype) = "Max70Text"];
+	string strt_nm = 4 [(gogoproto.casttype) = "Max70Text"];
+	string bldg_nb = 5 [(gogoproto.casttype) = "Max16Text"];
+	string pst_cd = 6 [(gogoproto.casttype) = "Max16Text"];
+	string twn_nm = 7 [(gogoproto.casttype) = "Max35Text"];
+	string ctry_sub_dvsn = 8 [(gogoproto.casttype) = "Max35Text"];
+	string ctry = 9 [(gogoproto.casttype) = "CountryCode"];
+	repeated string adr_line = 10;
+}
+
+message ResponseBody1 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	github.ibm.com.gftn.iso20022.ibwf00100101.FederationResponse1 fed_res = 1 [(gogoproto.nullable) = false];
+	github.ibm.com.gftn.iso20022.ibwf00100101.ComplianceResponse1 cmp_res = 2 [(gogoproto.nullable) = false];
+}
+
+message ServiceLevel8Choice {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string cd = 1 [(gogoproto.casttype) = "ExternalServiceLevel1Code"];
+	string prtry = 2 [(gogoproto.casttype) = "Max35Text"];
+}
+
+message SettlementInstruction4 {
+	option (gogoproto.goproto_getters) = false;
+	option (gogoproto.typedecl) = false;
+	string sttlm_mtd = 1 [(gogoproto.casttype) = "SettlementMethod1Code"];
+	github.ibm.com.gftn.iso20022.ibwf00100101.CashAccount24 sttlm_acct = 2;
+	github.ibm.com.gftn.iso20022.ibwf00100101.ClearingSystemIdentification3Choice clr_sys = 3;
+	github.ibm.com.gftn.iso20022.ibwf00100101.BranchAndFinancialInstitutionIdentification5 instg_rmbrsmnt_agt = 4;
+	github.ibm.com.gftn.iso20022.ibwf00100101.CashAccount24 instg_rmbrsmnt_agt_acct = 5;
+	github.ibm.com.gftn.iso20022.ibwf00100101.BranchAndFinancialInstitutionIdentification5 instd_rmbrsmnt_agt = 6;
+	github.ibm.com.gftn.iso20022.ibwf00100101.CashAccount24 instd_rmbrsmnt_agt_acct = 7;
+	github.ibm.com.gftn.iso20022.ibwf00100101.BranchAndFinancialInstitutionIdentification5 thrd_rmbrsmnt_agt = 8;
+	github.ibm.com.gftn.iso20022.ibwf00100101.CashAccount24 thrd_rmbrsmnt_agt_acct = 9;
+}
+
+message SendPayload { 				string msg_id = 1 [(gogoproto.nullable) = false]; 				string msg_type = 2 [(gogoproto.nullable) = false]; 				bytes message = 3 [(gogoproto.nullable) = false]; 				string ofi_id = 4 [(gogoproto.nullable) = false]; 				string ofi_public_key = 5 [(gogoproto.nullable) = false]; 				string rfi_id = 6 [(gogoproto.nullable) = false]; 				string instruction_id = 7 [(gogoproto.nullable) = false]; 				string original_instruction_id = 8 [(gogoproto.nullable) = false]; 				string original_msg_id = 9 [(gogoproto.nullable) = false]; 			} 			message Message { 				github.ibm.com.gftn.iso20022.ibwf00100101.FederationComplianceResponse1 body = 1 [(gogoproto.nullable) = false]; 				github.ibm.com.gftn.iso20022.ibwf00100101.BusinessApplicationHeaderV01 head = 2 [(gogoproto.nullable) = false]; 			}
